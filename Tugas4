@@ -1,0 +1,37 @@
+package Tugas4;
+import java.util.Scanner;
+
+public class HitungRataRata {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double totalNilai = 0;
+        int jumlahSiswa = 0;
+        String lanjut;
+
+        do {
+            // Meminta input nilai siswa
+            System.out.print("Masukkan Nilai Siswa: ");
+            while (!scanner.hasNextDouble()) { // Validasi input agar harus angka
+                System.out.println("Input tidak valid. Masukkan angka!");
+                scanner.next(); // Mengabaikan input non-numerik
+                System.out.print("Masukkan Nilai Siswa: ");
+            }
+            double nilai = scanner.nextDouble();
+            totalNilai += nilai;
+            jumlahSiswa++;
+
+            // Menanyakan apakah ingin memasukkan nilai lagi
+            System.out.print("Apakah Anda ingin memasukkan nilai lagi? (y/n): ");
+            lanjut = scanner.next();
+
+        } while (lanjut.equalsIgnoreCase("y"));
+
+        // Hitung dan tampilkan rata-rata nilai
+        if (jumlahSiswa > 0) {
+            double rataRata = totalNilai / jumlahSiswa;
+            System.out.printf("Rata-rata nilai siswa adalah: %.2f%n", rataRata);
+        } else {
+            System.out.println("Tidak ada nilai yang dimasukkan.");
+        }
+    }
+}
